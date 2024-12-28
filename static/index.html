@@ -2,23 +2,51 @@
 <html>
 <head>
     <title>Development Dashboard</title>
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.47.0/min/vs/editor/editor.main.min.css">
 </head>
 <body>
     <div id="dashboard">
-        <div id="editor-section">
-            <h2>VS Code Integration</h2>
-            <div id="editor-status"></div>
+        <div class="main-panel">
+            <div id="editor-section">
+                <h2>Code Editor</h2>
+                <div id="monaco-editor"></div>
+                <div class="editor-controls">
+                    <select id="language-select">
+                        <option value="python">Python</option>
+                    </select>
+                    <button id="execute-code-btn">Execute</button>
+                    <button id="debug-btn">Debug</button>
+                    <button id="improve-btn">Improve</button>
+                    <button id="save-btn">Save</button>
+                </div>
+            </div>
+            <div id="output-panel">
+                <h2>Interactive Output</h2>
+                <div id="execution-output" class="output-window"></div>
+                <div id="error-output" class="error-window"></div>
+                <div id="interaction-instructions" class="instructions-window"></div>
+            </div>
         </div>
-        <div id="llm-section">
-            <h2>LLM Integration</h2>
-            <div id="llm-output"></div>
-        </div>
-        <div id="updates-section">
-            <h2>Live Updates</h2>
-            <div id="updates-feed"></div>
+        <div class="sidebar">
+            <div id="llm-section">
+                <h2>Code Assistant</h2>
+                <textarea id="llm-input" placeholder="Ask for help or request code generation..."></textarea>
+                <button id="generate-code-btn">Generate Code</button>
+                <div id="llm-output"></div>
+            </div>
+            <div id="git-operations">
+                <h2>Git Operations</h2>
+                <input type="text" id="commit-message" placeholder="Commit message">
+                <button id="commit-btn">Commit Changes</button>
+                <button id="pull-btn">Pull Changes</button>
+            </div>
         </div>
     </div>
-    <script src="static/dashboard.js"></script>
+    <script>var require = { paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.47.0/min/vs' } };</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.47.0/min/vs/loader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.47.0/min/vs/editor/editor.main.nls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.47.0/min/vs/editor/editor.main.js"></script>
+    <script src="/static/dashboard.js"></script>
 </body>
 </html>
